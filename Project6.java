@@ -21,16 +21,12 @@ public class Project6 {
         e.name="Usama";
         e.Print();
         e.Print();
-        Student s=new Student();
-        s.CGPA=32;
-        s.name="USama";
+        Student s=new Student(12,"Usama");
         s.STDinfo();
-
-
-        
+        Student s3=new Student(s);
+        s3.STDinfo();
     }
 }
-
 class Student{
     String name;
     float CGPA;
@@ -39,4 +35,16 @@ class Student{
         System.out.println(this.name);
         System.out.println(this.CGPA);
     }
+    Student(){}
+    Student(Student s)
+    {
+        this.CGPA=s.CGPA;
+        this.name=s.name;
+    }
+    Student(int CGPA,String name)
+    {
+         this.CGPA=CGPA;
+         this.name=name;
+    }
+
 }
