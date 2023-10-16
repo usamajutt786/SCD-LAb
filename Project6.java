@@ -20,6 +20,7 @@ public class Project6 {
         e.age=12;
         e.name="Usama";
         e.Print();
+        e.Print();
 
         
     }
