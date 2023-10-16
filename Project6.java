@@ -21,7 +21,22 @@ public class Project6 {
         e.name="Usama";
         e.Print();
         e.Print();
+        Student s=new Student();
+        s.CGPA=32;
+        s.name="USama";
+        s.STDinfo();
+
 
         
+    }
+}
+
+class Student{
+    String name;
+    float CGPA;
+    void STDinfo()
+    {
+        System.out.println(this.name);
+        System.out.println(this.CGPA);
     }
 }
