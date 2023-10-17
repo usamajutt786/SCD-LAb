@@ -194,6 +194,7 @@ class Employee {
     private String employeeName;
     private String designation;
     private double salary;
+    
     public Employee(int employeeId, String employeeName, String designation, double salary) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
@@ -207,11 +208,15 @@ class Employee {
 }
 class SupportStaff extends Employee 
 {
-    public SupportStaff(int employeeId, String employeeName, String designation, double salary);
+    public SupportStaff(int employeeId, String employeeName, String designation, double salary){
+        super(employeeId, employeeName, designation, salary);
+    }
 }
 class TechnicalOperator extends Employee
 {
-
+    public TechnicalOperator(int employeeId, String employeeName, String designation, double salary){
+        super(employeeId, employeeName, designation, salary);
+    }
 }
 // Class9: Shops
 class Shops {
