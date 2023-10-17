@@ -9,17 +9,20 @@ class TheaterManagement {
     private List<Movie> movieList = new ArrayList<>();
     private List<Hall> halls = new ArrayList<>();
     private OperatorRoom operatorRoom;
-    private ParkingSlots parkingSlots;
     private TicketCounter ticketCounter;
-
+    private ParkingSlots parkingSlots;
+    public TheaterManagement(ParkingSlots parkingSlots)
+    {
+        this.parkingSlots=parkingSlots;
+    }
     public TheaterManagement(String theaterName, String city, int noOfScreens) {
         this.theaterName = theaterName;
         this.city = city;
         this.noOfScreens = noOfScreens;
     }
 
-    public boolean isOpen() {
-        // Implement isOpen logic
+    public boolean isOpen()
+    {
         return true;
     }
 
@@ -28,7 +31,6 @@ class TheaterManagement {
             System.out.println(movie.getMovieName());
         }
     }
-
     public void addMovie(Movie movie) {
         movieList.add(movie);
     }
@@ -56,6 +58,11 @@ class Movie {
     private String movieName;
     private String genre;
     private int duration;
+    private Hall hall;
+    Movie(Hall hall)
+    {
+        this.hall=hall;
+    }
 
     public Movie(int movieId, String movieName, String genre, int duration) {
         this.movieId = movieId;
@@ -81,7 +88,10 @@ class Hall {
     private String hallName;
     private int movieId;
     private Seats seats;
-
+    Hall(Seats seats)
+    {
+        this.seats=seats;
+    }
     public Hall(int hallId, String hallName, int movieId) {
         this.hallId = hallId;
         this.hallName = hallName;
@@ -111,7 +121,7 @@ class OperatorRoom {
     }
 
     public void control() {
-        // Implement control logic
+        // i will implement  logic  here
     }
 }
 
@@ -124,13 +134,12 @@ class ParkingSlots {
         this.totalSlots = totalSlots;
         this.slotsOccupied = slotsOccupied;
     }
-
     public void park() {
-        // Implement park logic
+        // i will implement  logic  here
     }
 
     public void pay() {
-        // Implement pay logic
+        // i will implement  logic  here
     }
 }
 
@@ -171,11 +180,11 @@ class TicketCounter {
     }
 
     public void showTicket() {
-        // Implement showTicket logic
+       // i will implement  logic  here
     }
 
     public void bookTicket() {
-        // Implement bookTicket logic
+        // i will implement  logic  here
     }
 }
 
@@ -185,7 +194,6 @@ class Employee {
     private String employeeName;
     private String designation;
     private double salary;
-
     public Employee(int employeeId, String employeeName, String designation, double salary) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
@@ -197,7 +205,14 @@ class Employee {
         // Implement employeeDetails logic
     }
 }
+class SupportStaff extends Employee 
+{
+    public SupportStaff(int employeeId, String employeeName, String designation, double salary);
+}
+class TechnicalOperator extends Employee
+{
 
+}
 // Class9: Shops
 class Shops {
     private int shopId;
@@ -213,15 +228,15 @@ class Shops {
     }
 
     public void shopDetails() {
-        // Implement shopDetails logic
+        // i will implement  logic  here
     }
 
     public void itemDetails() {
-        // Implement itemDetails logic
+       // i will implement  logic  here
     }
 
     public void buy() {
-        // Implement buy logic
+     // i will implement  logic  here
     }
 }
 
@@ -240,10 +255,9 @@ class Customer {
     }
 
     public void customerDetails() {
-        // Implement customerDetails logic
+        // i will implement  logic  here
     }
 }
-
 // Class11: RestRoom
 class RestRoom {
     private int noOfStaff;
@@ -253,14 +267,13 @@ class RestRoom {
     }
 
     public void use() {
-        // Implement use logic
+        // i will implement  logic  here
     }
 }
 
 // Main class
 public class se41 {
     public static void main(String[] args) {
-        // Create instances of your classes and set up associations as needed.
-        // You can interact with objects and implement more functionality as required.
+        // i will implement  logic  here
     }
 }
