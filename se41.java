@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// Class1: TheaterManagement
 class TheaterManagement {
     private String theaterName;
     private String city;
@@ -11,18 +10,15 @@ class TheaterManagement {
     private OperatorRoom operatorRoom;
     private TicketCounter ticketCounter;
     private ParkingSlots parkingSlots;
-    public TheaterManagement(ParkingSlots parkingSlots)
-    {
-        this.parkingSlots=parkingSlots;
-    }
+
     public TheaterManagement(String theaterName, String city, int noOfScreens) {
         this.theaterName = theaterName;
         this.city = city;
         this.noOfScreens = noOfScreens;
     }
 
-    public boolean isOpen()
-    {
+    public boolean isOpen() {
+        // Implement logic to check if the theater is open
         return true;
     }
 
@@ -31,6 +27,7 @@ class TheaterManagement {
             System.out.println(movie.getMovieName());
         }
     }
+
     public void addMovie(Movie movie) {
         movieList.add(movie);
     }
@@ -52,17 +49,12 @@ class TheaterManagement {
     }
 }
 
-// Class2: Movie
 class Movie {
     private int movieId;
     private String movieName;
     private String genre;
     private int duration;
     private Hall hall;
-    Movie(Hall hall)
-    {
-        this.hall=hall;
-    }
 
     public Movie(int movieId, String movieName, String genre, int duration) {
         this.movieId = movieId;
@@ -82,16 +74,12 @@ class Movie {
     }
 }
 
-// Class3: Hall
 class Hall {
     private int hallId;
     private String hallName;
     private int movieId;
     private Seats seats;
-    Hall(Seats seats)
-    {
-        this.seats=seats;
-    }
+
     public Hall(int hallId, String hallName, int movieId) {
         this.hallId = hallId;
         this.hallName = hallName;
@@ -108,7 +96,6 @@ class Hall {
     }
 }
 
-// Class4: OperatorRoom
 class OperatorRoom {
     private int interchargeId;
     private String interchargeName;
@@ -121,11 +108,10 @@ class OperatorRoom {
     }
 
     public void control() {
-        // i will implement  logic  here
+        // Implement operator room control logic
     }
 }
 
-// Class5: ParkingSlots
 class ParkingSlots {
     private int totalSlots;
     private int slotsOccupied;
@@ -134,16 +120,16 @@ class ParkingSlots {
         this.totalSlots = totalSlots;
         this.slotsOccupied = slotsOccupied;
     }
+
     public void park() {
-        // i will implement  logic  here
+        // Implement parking logic
     }
 
     public void pay() {
-        // i will implement  logic  here
+        // Implement payment logic
     }
 }
 
-// Class6: Seats
 class Seats {
     private int seatId;
     private int hallId;
@@ -159,11 +145,10 @@ class Seats {
     }
 
     public void displayAvailableSeats() {
-        // Implement displayAvailableSeats logic
+        // Implement logic to display available seats
     }
 }
 
-// Class7: TicketCounter
 class TicketCounter {
     private int ticketId;
     private int customerId;
@@ -180,21 +165,20 @@ class TicketCounter {
     }
 
     public void showTicket() {
-       // i will implement  logic  here
+        // Implement logic to display tickets
     }
 
     public void bookTicket() {
-        // i will implement  logic  here
+        // Implement ticket booking logic
     }
 }
 
-// Class8: Employee
 class Employee {
     private int employeeId;
     private String employeeName;
     private String designation;
     private double salary;
-    
+
     public Employee(int employeeId, String employeeName, String designation, double salary) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
@@ -203,22 +187,22 @@ class Employee {
     }
 
     public void employeeDetails() {
-        // Implement employeeDetails logic
+        // Implement employee details logic
     }
 }
-class SupportStaff extends Employee 
-{
-    public SupportStaff(int employeeId, String employeeName, String designation, double salary){
+
+class SupportStaff extends Employee {
+    public SupportStaff(int employeeId, String employeeName, String designation, double salary) {
         super(employeeId, employeeName, designation, salary);
     }
 }
-class TechnicalOperator extends Employee
-{
-    public TechnicalOperator(int employeeId, String employeeName, String designation, double salary){
+
+class TechnicalOperator extends Employee {
+    public TechnicalOperator(int employeeId, String employeeName, String designation, double salary) {
         super(employeeId, employeeName, designation, salary);
     }
 }
-// Class9: Shops
+
 class Shops {
     private int shopId;
     private int employeeId;
@@ -233,19 +217,18 @@ class Shops {
     }
 
     public void shopDetails() {
-        // i will implement  logic  here
+        // Implement shop details logic
     }
 
     public void itemDetails() {
-       // i will implement  logic  here
+        // Implement item details logic
     }
 
     public void buy() {
-     // i will implement  logic  here
+        // Implement shopping logic
     }
 }
 
-// Class10: Customer
 class Customer {
     private int customerId;
     private String customerName;
@@ -260,10 +243,10 @@ class Customer {
     }
 
     public void customerDetails() {
-        // i will implement  logic  here
+        // Implement customer details logic
     }
 }
-// Class11: RestRoom
+
 class RestRoom {
     private int noOfStaff;
 
@@ -272,13 +255,23 @@ class RestRoom {
     }
 
     public void use() {
-        // i will implement  logic  here
+        // Implement restroom usage logic
     }
 }
 
-// Main class
 public class se41 {
     public static void main(String[] args) {
-        // i will implement  logic  here
+        // Create instances of the classes and implement the main logic for the theater management system
+        TheaterManagement theater = new TheaterManagement("ABC Theater", "City", 5);
+        Movie movie1 = new Movie(1, "Movie A", "Action", 120);
+        Movie movie2 = new Movie(2, "Movie B", "Comedy", 90);
+        Hall hall1 = new Hall(1, "Hall 1", 1);
+        Seats seats1 = new Seats(1, 1, "Regular", 100);
+        hall1.setSeats(seats1);
+        theater.addMovie(movie1);
+        theater.addMovie(movie2);
+        theater.addHall(hall1);
+
+        // Implement more logic as per your requirements
     }
 }
