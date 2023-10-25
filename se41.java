@@ -68,7 +68,7 @@ class Theater {
 
 // Class2: Movie
 class Movie {
-    private int movieId;// not 
+    private int movieId;// 
     private String movieName;
     private String genre;
     private int duration;
