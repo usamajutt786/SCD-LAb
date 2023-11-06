@@ -64,11 +64,15 @@ class Theater {
         }
     }
 
+    public Object getParkingSlots() {
+        return null;
+    }
+
 }
 
 // Class2: Movie
 class Movie {
-    private int movieId;// 
+    private int movieId;//
     private String movieName;
     private String genre;
     private int duration;
@@ -141,11 +145,24 @@ class ParkingSlots {
     }
 
     public void park() {
+        if (slotsOccupied < totalSlots) {
+            slotsOccupied++;
+            System.out.println("Parked successfully. Slot occupied: " + slotsOccupied + "/" + totalSlots);
+        } else {
+            System.out.println("Parking is full. No available slots.");
+        }
     }
 
     public void pay() {
+        if (slotsOccupied > 0) {
+            slotsOccupied--;
+            System.out.println("Payment processed. Slot occupied: " + slotsOccupied + "/" + totalSlots);
+        } else {
+            System.out.println("No occupied slots to pay for.");
+        }
     }
 }
+
 
 // Class6: Seats
 class Seats {
@@ -163,6 +180,7 @@ class Seats {
     }
 
     public void displayAvailableSeats() {
+        System.out.println("Available seats: " + (totalSeats - noOfSeatsBooked));
     }
 }
 
@@ -183,13 +201,17 @@ class TicketCounter {
     }
 
     public void showTicket() {
+        System.out.println("Ticket id"+ticketId);
+        System.out.println("customer id "+customerId);
+        System.out.println("hall id "+hallId);
+        System.out.println("movie name "+movieName);
+        System.out.println("ticket price "+ticketPrice);
     }
-
     public void bookTicket() {
+        System.out.println("Ticket booked the ticket id is "+ticketId);
 
     }
 }
-
 // Class8: Employee
 class Employee {
     private int employeeId;
@@ -205,6 +227,10 @@ class Employee {
     }
 
     public void employeeDetails() {
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Name: " + employeeName);
+        System.out.println("Designation: " + designation);
+        System.out.println("Salary: " + salary);
     }
 }
 
@@ -223,15 +249,48 @@ class Shops {
     }
 
     public void shopDetails() {
-        // Implement shopDetails logic
+        System.out.println("Shop ID: " + shopId);
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Shop Name: " + shopName);
+        System.out.println("Items available:");
+        for (String item : itemList) {
+            System.out.println(item);
+        }
     }
 
     public void itemDetails() {
-        // Implement itemDetails logic
+        // Assuming itemDetails displays details of a specific item
+        if (itemList.isEmpty()) {
+            System.out.println("No items available");
+        } else {
+            System.out.println("Items available:");
+            for (String item : itemList) {
+                System.out.println(item);
+            }
+        }
     }
 
-    public void buy() {
-        // Implement buy logic
+    public void buy(String item) {
+        if (itemList.contains(item)) {
+            System.out.println("Purchased: " + item);
+            itemList.remove(item);
+        } else {
+            System.out.println("Item not available for purchase");
+        }
+    }
+
+    public void addItem(String item) {
+        itemList.add(item);
+        System.out.println("Added " + item + " to the shop's inventory.");
+    }
+
+    public void removeItem(String item) {
+        if (itemList.contains(item)) {
+            itemList.remove(item);
+            System.out.println("Removed " + item + " from the shop's inventory.");
+        } else {
+            System.out.println("Item not found in the inventory.");
+        }
     }
 }
 
@@ -251,6 +310,11 @@ class Customer {
 
     public void customerDetails() {
         // Implement customerDetails logic
+        System.out.println("the customer id is: "+customerId);
+        System.out.println("the customer name is: "+customerName);
+        System.out.println("the customer age is: "+customerAge);
+        System.out.println("the customer gender is: "+customerGender);
+        System.out.println("the customer id is: "+customerId);
     }
 }
 
@@ -263,80 +327,140 @@ class RestRoom {
     }
 
     public void use() {
-        // Implement use logic
+        if (noOfStaff > 0) {
+            System.out.println("Restroom in use. Staff monitoring the restroom.");
+        } else {
+            System.out.println("Restroom temporarily unavailable. No staff present.");
+        }
     }
 }
-
 public class se41 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Theater Management System!");
-        int choice;
-
         Theater theater = null;
+        int choice;
         do {
+            System.out.println("\n===== MENU =====");
             System.out.println("1. Add Theater");
             System.out.println("2. Add Movie");
-            System.out.println("3. Show Theater");
-            System.out.println("4. Show Movie");
-            System.out.println("Please enter your choice (-1 to exit):");
+            System.out.println("3. Show Theater Movies");
+            System.out.println("4. Book Ticket");
+            System.out.println("5. Show Employee Details");
+            System.out.println("6. Manage Shops");
+            System.out.println("7. Use Restroom");
+            System.out.println("8. Park Vehicle");
+            System.out.println("9. Exit");
+            System.out.print("Please enter your choice: ");
+
             choice = scanner.nextInt();
-            if (choice == 1) {
-                System.out.println("Enter theater name:");
-                String theaterName = scanner.next();
-                System.out.println("Enter city:");
-                String city = scanner.next();
-                System.out.println("Enter the number of screens:");
-                int noOfScreens = scanner.nextInt();
-                theater = new Theater(theaterName, city, noOfScreens);
-            } else if (choice == 2) {
-                System.out.println("Enter movie details:");
-                System.out.println("Enter movie ID:");
-                int movieId = scanner.nextInt();
-
-                System.out.println("Enter movie name:");
-                scanner.nextLine(); // Consume newline
-                String movieName = scanner.nextLine();
-
-                System.out.println("Enter genre:");
-                String genre = scanner.nextLine();
-                System.out.println("Enter duration (in minutes):");
-                int duration = scanner.nextInt();
-
-                Movie movie = new Movie(movieId, movieName, genre, duration);
-                theater.addMovie(movie);
-                System.out.println("You selected choice 2.");
-
-            } else if (choice == 3) {
-                theater.displayMovieNames();
-            } else if (choice == 4) {
-
-            } else if (choice == -1) {
-                System.out.println("Exiting the program.");
-            } else {
-                System.out.println("Invalid choice. Please try again.");
+            switch (choice) {
+                case 1:
+                    theater = addTheater(scanner);
+                    break;
+                case 2:
+                    if (theater != null) {
+                        addMovie(scanner, theater);
+                    } else {
+                        System.out.println("Please add a theater first.");
+                    }
+                    break;
+                case 3:
+                    if (theater != null) {
+                        theater.displayMovieNames();
+                    } else {
+                        System.out.println("Theater details not available.");
+                    }
+                    break;
+                case 4:
+                    // Booking ticket logic
+                    break;
+                case 5:
+                    // Show employee details
+                    break;
+                case 6:
+                    manageShops(scanner);
+                    break;
+                case 7:
+                    useRestroom(scanner);
+                    break;
+                case 8:
+                    if (theater != null) {
+                        parkVehicle(scanner, theater);
+                    } else {
+                        System.out.println("Please add a theater first.");
+                    }
+                    break;
+                case 9:
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
-        } while (choice != -1);
+        } while (choice != 9);
 
-        boolean continueAddingMovies = true;
-
-        while (continueAddingMovies) {
-            System.out.println("Do you want to add another movie? (yes/no)");
-            String addAnotherMovie = scanner.next();
-            if (!addAnotherMovie.equalsIgnoreCase("yes")) {
-                continueAddingMovies = false;
-            }
-        }
-
-        if (theater != null) {
-            System.out.println("Movie Names:");
-            theater.displayMovieNames();
-        }
-
-        // Implement similar logic for other objects like Hall, OperatorRoom,
-        // ParkingSlots, TicketCounter, etc.
-
-        // Close the scanner
         scanner.close();
+    }
+
+    public static Theater addTheater(Scanner scanner) {
+        System.out.println("\n=== Add Theater ===");
+        System.out.print("Enter theater name: ");
+        String theaterName = scanner.next();
+        System.out.print("Enter city: ");
+        String city = scanner.next();
+        System.out.print("Enter the number of screens: ");
+        int noOfScreens = scanner.nextInt();
+        return new Theater(theaterName, city, noOfScreens);
+    }
+
+    public static void addMovie(Scanner scanner, Theater theater) {
+        System.out.println("\n=== Add Movie ===");
+        System.out.print("Enter movie ID: ");
+        int movieId = scanner.nextInt();
+        System.out.print("Enter movie name: ");
+        scanner.nextLine(); // Consume newline
+        String movieName = scanner.nextLine();
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+        System.out.print("Enter duration (in minutes): ");
+        int duration = scanner.nextInt();
+
+        Movie movie = new Movie(movieId, movieName, genre, duration);
+        theater.addMovie(movie);
+        System.out.println("Movie added successfully.");
+    }
+
+    public static void manageShops(Scanner scanner) {
+        System.out.println("\n=== Manage Shops ===");
+        // Logic for shop management: Add, Remove, Buy, Display, etc.
+    }
+
+    public static void useRestroom(Scanner scanner) {
+        System.out.println("\n=== Use Restroom ===");
+        // Logic for using the restroom
+    }
+
+    public static void parkVehicle(Scanner scanner, Theater theater) {
+        System.out.println("\n=== Park Vehicle ===");
+        if (theater.getParkingSlots() != null) {
+            System.out.println("1. Park a vehicle");
+            System.out.println("2. Pay for parking");
+            System.out.print("Please enter your choice: ");
+            int parkingChoice = scanner.nextInt();
+
+            switch (parkingChoice) {
+                case 1:
+                    ((ParkingSlots) theater.getParkingSlots()).park();
+                    break;
+                case 2:
+                    ((ParkingSlots) theater.getParkingSlots()).pay();
+                    break;
+                default:
+                    System.out.println("Invalid choice for parking.");
+                    break;
+            }
+        } else {
+            System.out.println("Parking slot details are unavailable.");
+        }
     }
 }
